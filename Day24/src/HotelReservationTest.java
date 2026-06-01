@@ -13,7 +13,7 @@ public class HotelReservationTest {
         Hotel hotel = new Hotel(
                 "Lakewood",
                 110,
-                90
+                90,3
         );
 
         assertEquals(
@@ -40,9 +40,9 @@ public class HotelReservationTest {
 
         HotelReservationSystem system = new HotelReservationSystem();
 
-        system.addHotel(new Hotel("Lakewood", 110, 90));
-        system.addHotel(new Hotel("Bridgewood", 150, 50));
-        system.addHotel(new Hotel("Ridgewood", 220, 150));
+        system.addHotel(new Hotel("Lakewood", 110, 90,3));
+        system.addHotel(new Hotel("Bridgewood", 150, 50,4));
+        system.addHotel(new Hotel("Ridgewood", 220, 150,5));
 
         LocalDate start = LocalDate.of(2020, 9, 10);
         LocalDate end = LocalDate.of(2020, 9, 11);
@@ -50,5 +50,16 @@ public class HotelReservationTest {
         Hotel cheapest = system.findCheapestHotel(start, end);
 
         assertEquals("Lakewood", cheapest.name);
+    }
+    @Test
+    void givenHotel_shouldStoreRateAndRating()
+    {
+        Hotel hotel =
+                new Hotel("Lakewood", 110, 90, 3);
+
+        assertEquals(110, hotel.regularWeekdayRate);
+        assertEquals(90, hotel.regularWeekendRate);
+        assertEquals(3, hotel.ratings);
+
     }
 }
