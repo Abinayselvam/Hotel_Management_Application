@@ -1,5 +1,6 @@
+import java.time.DayOfWeek;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
+import java.util.*;
 import java.time.LocalDate;
 
 public class HotelReservationSystem {
@@ -18,26 +19,41 @@ public class HotelReservationSystem {
         }
     }
 
-    public Hotel findCheapestHotel(LocalDate start, LocalDate end) {
+    public Hotel findCheapestBestRatedHotel(List<LocalDate> dates) {
 
-        int totalDays = (int) ChronoUnit.DAYS.between(start, end);
-
-        int weekDays = totalDays; // UC2 assumption
-        int weekEnds = 0;
-
-        Hotel cheapest = null;
-        int minCost = Integer.MAX_VALUE;
+        Map<Hotel, Integer> costMap = new HashMap<>();
 
         for (Hotel hotel : hotels) {
 
-            int cost = hotel.calculateTotalCost(weekDays, weekEnds);
+            int totalCost = 0;
 
-            if (cost < minCost) {
-                minCost = cost;
-                cheapest = hotel;
+            for (LocalDate date : dates) {
+
+                DayOfWeek day = date.getDayOfWeek();
+
+                if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
+                    totalCost += hotel.regularWeekendRate;
+                } else {
+                    totalCost += hotel.regularWeekdayRate;
+                }
+            }
+
+            costMap.put(hotel, totalCost);
+        }
+
+        int minCost = Collections.min(costMap.values());
+
+        List<Hotel> cheapestHotels = new ArrayList<>();
+
+        for (Map.Entry<Hotel, Integer> entry : costMap.entrySet()) {
+
+            if (entry.getValue() == minCost) {
+                cheapestHotels.add(entry.getKey());
             }
         }
 
-        return cheapest;
+        return cheapestHotels.stream()
+                .max(Comparator.comparingInt(h -> h.ratings))
+                .orElse(null);
     }
 }
