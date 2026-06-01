@@ -1,3 +1,4 @@
+import javax.swing.plaf.PanelUI;
 import java.util.ArrayList;
 
 public class HotelReservationSystem {
@@ -14,5 +15,20 @@ public class HotelReservationSystem {
         {
             System.out.println("Hotel Name: "+h.getName()+" | "+" Rate: "+h.getRate());
         }
+    }
+    public Hotel findCheapestHotel(int days)
+    {
+        Hotel cheapest=null;
+        int minimumCost=Integer.MAX_VALUE;
+        for(Hotel hotel:hotels)
+        {
+            int totalCost=hotel.getRate()*days;
+            if(totalCost<minimumCost)
+            {
+                minimumCost=totalCost;
+                cheapest=hotel;
+            }
+        }
+        return cheapest;
     }
 }
