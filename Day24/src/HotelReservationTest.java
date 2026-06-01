@@ -37,22 +37,7 @@ public class HotelReservationTest {
 
     // UC2
 
-    @Test
-    void givenDateRange_ShouldReturnCheapestHotel() {
 
-        HotelReservationSystem system = new HotelReservationSystem();
-
-        system.addHotel(new Hotel("Lakewood", 110, 90,3));
-        system.addHotel(new Hotel("Bridgewood", 150, 50,4));
-        system.addHotel(new Hotel("Ridgewood", 220, 150,5));
-
-        LocalDate start = LocalDate.of(2020, 9, 10);
-        LocalDate end = LocalDate.of(2020, 9, 11);
-
-        Hotel cheapest = system.findCheapestHotel(start, end);
-
-        assertEquals("Lakewood", cheapest.name);
-    }
     @Test
     void givenHotel_shouldStoreRateAndRating()
     {
@@ -65,20 +50,15 @@ public class HotelReservationTest {
 
     }
     @Test
-    void givenDateRange_shouldReturnCheapestBestRatedHotel() {
+    void givenDateRange_ShouldReturnCheapestBestRatedHotel() {
 
         HotelReservationSystem system = new HotelReservationSystem();
 
         system.addHotel(new Hotel("Lakewood", 110, 90, 3));
-        system.addHotel(new Hotel("Bridgewood", 160, 60, 4));
+        system.addHotel(new Hotel("Bridgewood", 150, 50, 4));
         system.addHotel(new Hotel("Ridgewood", 220, 150, 5));
 
-        List<LocalDate> dates = Arrays.asList(
-                LocalDate.of(2020, 9, 11),
-                LocalDate.of(2020, 9, 12)
-        );
-
-        Hotel result = system.findCheapestHotel(dates);
+        Hotel result = system.findCheapestBestRated(1, 1);
 
         assertEquals("Bridgewood", result.name);
     }

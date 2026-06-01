@@ -19,41 +19,20 @@ public class HotelReservationSystem {
         }
     }
 
-    public Hotel findCheapestBestRatedHotel(List<LocalDate> dates) {
+    public Hotel findCheapestBestRated(int weekdayCount, int weekendCount) {
 
-        Map<Hotel, Integer> costMap = new HashMap<>();
+        return hotels.stream()
+                .min((h1, h2) -> {
 
-        for (Hotel hotel : hotels) {
+                    int cost1 = h1.calculateTotalCost(weekdayCount, weekendCount);
+                    int cost2 = h2.calculateTotalCost(weekdayCount, weekendCount);
 
-            int totalCost = 0;
+                    if (cost1 == cost2) {
+                        return Integer.compare(h2.ratings, h1.ratings); // higher rating wins
+                    }
 
-            for (LocalDate date : dates) {
-
-                DayOfWeek day = date.getDayOfWeek();
-
-                if (day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY) {
-                    totalCost += hotel.regularWeekendRate;
-                } else {
-                    totalCost += hotel.regularWeekdayRate;
-                }
-            }
-
-            costMap.put(hotel, totalCost);
-        }
-
-        int minCost = Collections.min(costMap.values());
-
-        List<Hotel> cheapestHotels = new ArrayList<>();
-
-        for (Map.Entry<Hotel, Integer> entry : costMap.entrySet()) {
-
-            if (entry.getValue() == minCost) {
-                cheapestHotels.add(entry.getKey());
-            }
-        }
-
-        return cheapestHotels.stream()
-                .max(Comparator.comparingInt(h -> h.ratings))
+                    return Integer.compare(cost1, cost2); // cheaper wins
+                })
                 .orElse(null);
     }
 }
