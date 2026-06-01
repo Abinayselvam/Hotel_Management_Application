@@ -46,6 +46,14 @@ public class Main {
                 cheapest.getRate() * days;
 
         System.out.println(
+
+                cheapest.name +
+
+                        ", Total Rate: $" +
+
+                        cheapest.calculateRate(
+                                2
+                        )
                 cheapest.getName() +
                         " $" + totalCost
         );
