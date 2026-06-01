@@ -49,7 +49,7 @@ public class Main {
 
                 cheapest.name +
 
-                        ", Total Rate: $" +
+                        ", Total Rates: $" +
 
                         cheapest.calculateRate(
                                 2
