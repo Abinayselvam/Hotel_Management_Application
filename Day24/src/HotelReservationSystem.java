@@ -1,4 +1,6 @@
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class HotelReservationSystem {
     ArrayList<Hotel> hotels=new ArrayList<>();
@@ -15,29 +17,24 @@ public class HotelReservationSystem {
             System.out.println("Hotel Name: "+h.getName()+" | "+" Regular Week day: "+h.regularWeekdayRate+" | "+" Regular Week end: "+h.regularWeekendRate);
         }
     }
-    public Hotel findCheapestHotel(
-            int days) {
 
-        Hotel cheapest =
-                null;
+    public Hotel findCheapestHotel(LocalDate start, LocalDate end) {
 
-        int minCost =
-                Integer.MAX_VALUE;
+        int totalDays = (int) ChronoUnit.DAYS.between(start, end);
 
-        for(Hotel hotel : hotels) {
+        int weekDays = totalDays; // UC2 assumption
+        int weekEnds = 0;
 
-            int totalRate =
-                    hotel.calculateRate(
-                            days
-                    );
+        Hotel cheapest = null;
+        int minCost = Integer.MAX_VALUE;
 
-            if(totalRate < minCost) {
+        for (Hotel hotel : hotels) {
 
-                minCost =
-                        totalRate;
+            int cost = hotel.calculateTotalCost(weekDays, weekEnds);
 
-                cheapest =
-                        hotel;
+            if (cost < minCost) {
+                minCost = cost;
+                cheapest = hotel;
             }
         }
 

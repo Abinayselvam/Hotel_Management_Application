@@ -1,6 +1,5 @@
 public class Hotel {
     String name;
-    int regularRate;
     int regularWeekdayRate;
     int regularWeekendRate;
     int rewardWeekdayRate;
@@ -15,12 +14,9 @@ public class Hotel {
     {
         return name;
     }
-    public int getRate() {
-        return regularRate;
-    }
-    public int calculateRate(
-            int days) {
+    public int calculateTotalCost(
+            int weekDays,int weekEnds) {
 
-        return regularRate * days;
+        return  (weekDays*regularWeekdayRate)+(weekEnds*regularWeekendRate);
     }
 }

@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HotelReservationTest {
@@ -30,39 +32,23 @@ public class HotelReservationTest {
         );
     }
 
+
     // UC2
+
     @Test
     void givenDateRange_ShouldReturnCheapestHotel() {
 
-        HotelReservationSystem reservation =
-                new HotelReservationSystem();
+        HotelReservationSystem system = new HotelReservationSystem();
 
-        reservation.addHotel(new Hotel("Lakewood",
-                110,
-                90)
+        system.addHotel(new Hotel("Lakewood", 110, 90));
+        system.addHotel(new Hotel("Bridgewood", 150, 50));
+        system.addHotel(new Hotel("Ridgewood", 220, 150));
 
-        );
+        LocalDate start = LocalDate.of(2020, 9, 10);
+        LocalDate end = LocalDate.of(2020, 9, 11);
 
-        reservation.addHotel(new Hotel("Bridgewood",
-                150,
-                50)
+        Hotel cheapest = system.findCheapestHotel(start, end);
 
-        );
-
-        reservation.addHotel(new Hotel("Ridgewood",
-                220,
-                150)
-
-        );
-
-        Hotel cheapestHotel =
-                reservation.findCheapestHotel(
-                        2
-                );
-
-        assertEquals(
-                "Lakewood",
-                cheapestHotel.name
-        );
+        assertEquals("Lakewood", cheapest.name);
     }
 }
