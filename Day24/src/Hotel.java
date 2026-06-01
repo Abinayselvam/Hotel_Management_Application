@@ -1,3 +1,5 @@
+import javax.swing.plaf.PanelUI;
+
 public class Hotel {
     String name;
     int regularRate;
@@ -18,5 +20,9 @@ public class Hotel {
     public int getRate() {
         return regularRate;
     }
+    public int calculateRate(
+            int days) {
 
+        return regularRate * days;
+    }
 }

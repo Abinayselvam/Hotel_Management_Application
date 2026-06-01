@@ -15,19 +15,32 @@ public class HotelReservationSystem {
             System.out.println("Hotel Name: "+h.getName()+" | "+" Rate: "+h.getRate());
         }
     }
-    public Hotel findCheapestHotel(int days)
-    {
-        Hotel cheapest=null;
-        int minimumCost=Integer.MAX_VALUE;
-        for(Hotel hotel:hotels)
-        {
-            int totalCost=hotel.getRate()*days;
-            if(totalCost<minimumCost)
-            {
-                minimumCost=totalCost;
-                cheapest=hotel;
+    public Hotel findCheapestHotel(
+            int days) {
+
+        Hotel cheapest =
+                null;
+
+        int minCost =
+                Integer.MAX_VALUE;
+
+        for(Hotel hotel : hotels) {
+
+            int totalRate =
+                    hotel.calculateRate(
+                            days
+                    );
+
+            if(totalRate < minCost) {
+
+                minCost =
+                        totalRate;
+
+                cheapest =
+                        hotel;
             }
         }
+
         return cheapest;
     }
 }
