@@ -3,4 +3,5 @@ public class InvalidHotelException extends Exception{
     {
         super(message);
     }
+
 }

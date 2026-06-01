@@ -58,6 +58,7 @@ public class Main {
                         " $" + totalCost
         );
 
+
         scanner.close();
 
     }

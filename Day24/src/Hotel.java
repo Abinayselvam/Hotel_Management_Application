@@ -23,6 +23,9 @@ public class Hotel {
     public int calculateRate(
             int days) {
 
+
+
         return regularRate * days;
     }
 }
+
