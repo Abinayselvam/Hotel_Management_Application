@@ -5,10 +5,11 @@ public class Hotel {
     int regularWeekendRate;
     int rewardWeekdayRate;
     int rewardWeekendRate;
-    public Hotel(String name,int regularRate)
+    public Hotel(String name,int regularWeekdayRate,int regularWeekendRate)
     {
         this.name=name;
-        this.regularRate=regularRate;
+        this.regularWeekdayRate=regularWeekdayRate;
+        this.regularWeekendRate=regularWeekendRate;
     }
     public String getName()
     {

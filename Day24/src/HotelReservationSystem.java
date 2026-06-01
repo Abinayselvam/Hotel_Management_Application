@@ -12,7 +12,7 @@ public class HotelReservationSystem {
         System.out.println("Available Hotels");
         for (Hotel h:hotels)
         {
-            System.out.println("Hotel Name: "+h.getName()+" | "+" Rate: "+h.getRate());
+            System.out.println("Hotel Name: "+h.getName()+" | "+" Regular Week day: "+h.regularWeekdayRate+" | "+" Regular Week end: "+h.regularWeekendRate);
         }
     }
     public Hotel findCheapestHotel(

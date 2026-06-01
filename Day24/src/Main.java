@@ -10,9 +10,9 @@ public class Main {
         HotelReservationSystem system =
                 new HotelReservationSystem();
 
-        system.addHotel(new Hotel("Lakewood",110));
-        system.addHotel(new Hotel("Bridgewood",160));
-        system.addHotel(new Hotel("Ridgewood",220));
+        system.addHotel(new Hotel("Lakewood",110,90));
+        system.addHotel(new Hotel("Bridgewood",150,60));
+        system.addHotel(new Hotel("Ridgewood",220,150));
 
         Scanner scanner = new Scanner(System.in);
 
