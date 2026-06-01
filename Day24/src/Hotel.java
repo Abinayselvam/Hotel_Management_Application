@@ -1,5 +1,3 @@
-import javax.swing.plaf.PanelUI;
-
 public class Hotel {
     String name;
     int regularRate;
