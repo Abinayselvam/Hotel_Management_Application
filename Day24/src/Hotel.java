@@ -6,6 +6,7 @@ public class Hotel {
     int rewardWeekdayRate;
     int rewardWeekendRate;
     public Hotel(String name,int regularRate)
+
     {
         this.name=name;
         this.regularRate=regularRate;
