@@ -53,7 +53,7 @@ public class Main {
 
                         cheapest.calculateRate(
                                 2
-                        )
+                        )+
                 cheapest.getName() +
                         " $" + totalCost
         );
