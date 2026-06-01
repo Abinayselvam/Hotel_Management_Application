@@ -10,8 +10,7 @@ public class Hotel {
         this.name=name;
         this.regularRate=regularRate;
     }
-<<<<<<< Updated upstream
-=======
+
     public String getName()
     {
         return name;
@@ -19,5 +18,5 @@ public class Hotel {
     public int getRate() {
         return regularRate;
     }
->>>>>>> Stashed changes
+
 }
