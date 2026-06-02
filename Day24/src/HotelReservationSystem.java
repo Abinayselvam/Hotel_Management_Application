@@ -19,20 +19,66 @@ public class HotelReservationSystem {
         }
     }
 
-    public Hotel findCheapestBestRated(int weekdayCount, int weekendCount) {
+    public Hotel findBestRatedCheapestHotel(
+
+            List<Hotel> hotels,
+
+            int weekdayCount,
+
+            int weekendCount) {
 
         return hotels.stream()
-                .min((h1, h2) -> {
 
-                    int cost1 = h1.calculateTotalCost(weekdayCount, weekendCount);
-                    int cost2 = h2.calculateTotalCost(weekdayCount, weekendCount);
+                .map(
 
-                    if (cost1 == cost2) {
-                        return Integer.compare(h2.ratings, h1.ratings); // higher rating wins
-                    }
+                        hotel ->
 
-                    return Integer.compare(cost1, cost2); // cheaper wins
-                })
+                                new HotelPriceResults(
+
+                                        hotel,
+
+                                        hotel.calculateTotalRate(
+
+                                                CustomerType.Regular_Cus,
+
+                                                2,
+
+                                                1
+                                        )
+                                )
+                )
+
+                .sorted(
+
+                        (h1, h2) -> {
+
+                            if(h1.totalCost
+                                    !=
+                                    h2.totalCost) {
+
+                                return Integer.compare(
+
+                                        h1.totalCost,
+
+                                        h2.totalCost
+                                );
+                            }
+
+                            return Integer.compare(
+
+                                    h2.hotel.rating,
+
+                                    h1.hotel.rating
+                            );
+                        }
+                )
+
+                .map(
+
+                        result -> result.hotel
+                )
+
+                .findFirst()
+
                 .orElse(null);
-    }
-}
+    }}

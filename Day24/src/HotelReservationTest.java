@@ -46,20 +46,26 @@ public class HotelReservationTest {
 
         assertEquals(110, hotel.regularWeekdayRate);
         assertEquals(90, hotel.regularWeekendRate);
-        assertEquals(3, hotel.ratings);
+        assertEquals(3, hotel.rating);
 
     }
     @Test
-    void givenDateRange_ShouldReturnCheapestBestRatedHotel() {
+    void givenMultipleHotels_ShouldReturnCheapestBestRatedHotel() {
+
+        List<Hotel> hotels = List.of(
+                new Hotel("Lakewood", 110, 90, 3),
+                new Hotel("Bridgewood", 150, 50, 4),
+                new Hotel("Ridgewood", 220, 150, 5)
+        );
 
         HotelReservationSystem system = new HotelReservationSystem();
 
-        system.addHotel(new Hotel("Lakewood", 110, 90, 3));
-        system.addHotel(new Hotel("Bridgewood", 150, 50, 4));
-        system.addHotel(new Hotel("Ridgewood", 220, 150, 5));
+        Hotel result = system.findBestRatedCheapestHotel(
+                hotels,
+                2, // weekdays
+                0  // weekends
+        );
 
-        Hotel result = system.findCheapestBestRated(1, 1);
-
-        assertEquals("Bridgewood", result.name);
+        assertEquals("Lakewood", result.name);
     }
 }

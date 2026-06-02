@@ -1,28 +1,75 @@
 public class Hotel {
+
     String name;
+
     int regularWeekdayRate;
     int regularWeekendRate;
+
     int rewardWeekdayRate;
     int rewardWeekendRate;
-    int ratings;
-    public Hotel(String name,int regularWeekdayRate,int regularWeekendRate,int ratings)
-    {
-        this.name=name;
-        this.regularWeekdayRate=regularWeekdayRate;
-        this.regularWeekendRate=regularWeekendRate;
-        this.ratings=ratings;
-    }
-    public int getRatings()
-    {
-        return ratings;
-    }
+
+    int rating;
+
     public String getName()
     {
         return name;
     }
-    public int calculateTotalCost(
-            int weekDays,int weekEnds) {
+    public Hotel(
 
-        return  (weekDays*regularWeekdayRate)+(weekEnds*regularWeekendRate);
+            String name,
+
+            int regularWeekdayRate,
+
+            int regularWeekendRate,
+
+            int rating) {
+
+        this.name = name;
+
+        this.regularWeekdayRate =
+                regularWeekdayRate;
+
+        this.regularWeekendRate =
+                regularWeekendRate;
+
+        this.rating =
+                rating;
+    }
+
+    public int calculateTotalRate(
+
+            CustomerType customerType,
+
+            int weekdayCount,
+
+            int weekendCount) {
+
+        if(customerType
+                ==
+                CustomerType.Regular_Cus) {
+
+            return
+
+                    (weekdayCount
+                            * regularWeekdayRate)
+
+                            +
+
+                            (weekendCount
+                                    * regularWeekendRate);
+        }
+
+        else {
+
+            return
+
+                    (weekdayCount
+                            * rewardWeekdayRate)
+
+                            +
+
+                            (weekendCount
+                                    * rewardWeekendRate);
+        }
     }
 }
