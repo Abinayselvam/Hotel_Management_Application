@@ -14,6 +14,8 @@ public class Main {
                         "Lakewood",
                         110,
                         90,
+                        80,
+                        80,
                         3
                 )
         );
@@ -23,6 +25,8 @@ public class Main {
                         "Bridgewood",
                         150,
                         60,
+                        110,
+                        50,
                         4
                 )
         );
@@ -32,6 +36,8 @@ public class Main {
                         "Ridgewood",
                         220,
                         150,
+                        100,
+                        40,
                         5
                 )
         );
@@ -54,9 +60,7 @@ public class Main {
                 scanner.nextLine();
 
         DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern(
-                        "ddMMMyyyy"
-                );
+                DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         LocalDate startDate =
                 LocalDate.parse(
@@ -89,6 +93,7 @@ public class Main {
                 system.findBestRatedCheapestHotel(
 
                         system.hotels,
+                        CustomerType.Regular_Cus,
 
                         weekdayCount,
 

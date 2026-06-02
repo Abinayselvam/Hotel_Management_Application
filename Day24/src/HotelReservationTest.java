@@ -15,7 +15,10 @@ public class HotelReservationTest {
         Hotel hotel = new Hotel(
                 "Lakewood",
                 110,
-                90,3
+                90,
+                80,
+                80,
+                3
         );
 
         assertEquals(
@@ -42,7 +45,7 @@ public class HotelReservationTest {
     void givenHotel_shouldStoreRateAndRating()
     {
         Hotel hotel =
-                new Hotel("Lakewood", 110, 90, 3);
+                new Hotel("Lakewood", 110, 90, 110,40,3);
 
         assertEquals(110, hotel.regularWeekdayRate);
         assertEquals(90, hotel.regularWeekendRate);
@@ -53,15 +56,16 @@ public class HotelReservationTest {
     void givenMultipleHotels_ShouldReturnCheapestBestRatedHotel() {
 
         List<Hotel> hotels = List.of(
-                new Hotel("Lakewood", 110, 90, 3),
-                new Hotel("Bridgewood", 150, 50, 4),
-                new Hotel("Ridgewood", 220, 150, 5)
+                new Hotel("Lakewood", 110, 90, 80,80,3),
+                new Hotel("Bridge wood", 150, 50,110,40, 4),
+                new Hotel("Ridgewood", 220, 150, 100,40,5)
         );
 
         HotelReservationSystem system = new HotelReservationSystem();
 
         Hotel result = system.findBestRatedCheapestHotel(
                 hotels,
+                CustomerType.Regular_Cus,
                 2, // weekdays
                 0  // weekends
         );

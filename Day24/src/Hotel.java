@@ -21,7 +21,8 @@ public class Hotel {
             int regularWeekdayRate,
 
             int regularWeekendRate,
-
+            int rewardWeekendRate,
+            int rewardWeekdayRate,
             int rating) {
 
         this.name = name;
@@ -31,6 +32,8 @@ public class Hotel {
 
         this.regularWeekendRate =
                 regularWeekendRate;
+        this.rewardWeekendRate=rewardWeekendRate;
+        this.rewardWeekdayRate=rewardWeekdayRate;
 
         this.rating =
                 rating;

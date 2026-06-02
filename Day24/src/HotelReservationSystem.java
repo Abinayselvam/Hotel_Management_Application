@@ -22,6 +22,7 @@ public class HotelReservationSystem {
     public Hotel findBestRatedCheapestHotel(
 
             List<Hotel> hotels,
+            CustomerType types,
 
             int weekdayCount,
 
