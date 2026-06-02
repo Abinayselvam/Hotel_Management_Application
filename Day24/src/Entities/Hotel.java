@@ -1,14 +1,19 @@
+package Entities;
+import Enums.CustomerType;
+
+import java.security.PublicKey;
+
 public class Hotel {
 
-    String name;
+    public String  name;
 
-    int regularWeekdayRate;
-    int regularWeekendRate;
+   public int regularWeekdayRate;
+   public int regularWeekendRate;
 
-    int rewardWeekdayRate;
-    int rewardWeekendRate;
+   public int rewardWeekdayRate;
+   public int rewardWeekendRate;
 
-    int rating;
+   public int rating;
 
     public String getName()
     {
@@ -41,38 +46,29 @@ public class Hotel {
 
     public int calculateTotalRate(
 
-            CustomerType customerType,
+            CustomerType type,
 
             int weekdayCount,
 
             int weekendCount) {
 
-        if(customerType
-                ==
-                CustomerType.Regular_Cus) {
+        if(type == CustomerType.Regular_Cus) {
 
             return
 
-                    (weekdayCount
-                            * regularWeekdayRate)
+                    (weekdayCount * regularWeekdayRate)
 
                             +
 
-                            (weekendCount
-                                    * regularWeekendRate);
+                            (weekendCount * regularWeekendRate);
         }
 
-        else {
+        return
 
-            return
+                (weekdayCount * rewardWeekdayRate)
 
-                    (weekdayCount
-                            * rewardWeekdayRate)
+                        +
 
-                            +
-
-                            (weekendCount
-                                    * rewardWeekendRate);
-        }
+                        (weekendCount * rewardWeekendRate);
     }
 }

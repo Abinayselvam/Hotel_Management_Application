@@ -1,8 +1,10 @@
+package Entities;
+
 public class HotelPriceResults{
 
-    Hotel hotel;
+    public Hotel hotel;
 
-    int totalCost;
+    public int totalCost;
 
     public HotelPriceResults(
 

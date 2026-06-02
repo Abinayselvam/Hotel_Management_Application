@@ -1,11 +1,14 @@
+package Test;
+
+import Enums.CustomerType;
+import Exceptions.InvalidHotelException;
+import Services.HotelReservationSystem;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import Entities.Hotel;
 public class HotelReservationTest {
 
     // UC1 + UC3
@@ -53,7 +56,7 @@ public class HotelReservationTest {
 
     }
     @Test
-    void givenMultipleHotels_ShouldReturnCheapestBestRatedHotel() {
+    void givenMultipleHotels_ShouldReturnCheapestBestRatedHotel() throws InvalidHotelException {
 
         List<Hotel> hotels = List.of(
                 new Hotel("Lakewood", 110, 90, 80,80,3),
