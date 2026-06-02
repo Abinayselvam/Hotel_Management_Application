@@ -28,7 +28,7 @@ public class HotelReservationSystem {
 
             List<Hotel> hotels,
 
-            CustomerType type,
+            CustomerType customerType,
 
             int weekdayCount,
 
@@ -55,7 +55,7 @@ public class HotelReservationSystem {
 
                                         hotel.calculateTotalRate(
 
-                                                type,
+                                                customerType,
 
                                                 weekdayCount,
 
@@ -85,11 +85,10 @@ public class HotelReservationSystem {
                 .findFirst()
 
                 .orElseThrow(
-
-                        () -> new InvalidHotelException(
-                                "Unable to Find Hotel"
-                        )
-                );
+                        () ->
+                                new InvalidHotelException(
+                                        "Unable to Find Hotel"
+                                ));
     }
 
 }

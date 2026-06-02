@@ -39,7 +39,7 @@ public class Main {
 
                 new Hotel(
 
-                        "Bridgewood",
+                        "Bridge wood",
 
                         150,
 
@@ -114,9 +114,17 @@ public class Main {
                         .Regular_Cus;
 
         String[] dates =
+                parts[1].split(",");
 
-                parts[1]
-                        .split(",");
+        ValidationUtil
+                .validateDate(
+                        dates[0].trim()
+                );
+
+        ValidationUtil
+                .validateDate(
+                        dates[1].trim()
+                );
 
         DateTimeFormatter formatter =
 
